@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "test": "tsc && jasmine --config=jasmine.json"
+    },
+    "dependencies": {
+        "@types/jasmine": "^3.10.3",
+        "jasmine": "^4.0.2",
+        "jasmine-ts-console-reporter": "^3.1.1",
+        "typescript": "^4.6.2"
+    }
+}
