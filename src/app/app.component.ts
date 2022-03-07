@@ -35,13 +35,13 @@ export class AppComponent implements OnInit {
     this.simulation = new SimulationController();
   }
   ngOnInit(): void {
-    particlesJS.load(
-      'particle-container',
-      'assets/particlesjs-config.json',
-      function () {
-        console.log('callback - particles.js config loaded');
-      }
-    );
+    // particlesJS.load(
+    //   'particle-container',
+    //   'assets/particlesjs-config.json',
+    //   function () {
+    //     console.log('callback - particles.js config loaded');
+    //   }
+    // );
   }
 
   reset() {
