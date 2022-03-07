@@ -28,7 +28,7 @@ export class SimulationController {
   constructor() {}
 
   run(command: string): Output {
-    let chars = command.split('');
+    let chars = command.trim().split(' ');
 
     chars = chars.filter((char) => char.trim());
 
@@ -51,6 +51,7 @@ export class SimulationController {
   }
   private createBoard(chars: string[]): Output {
     this.board = new Board({ X: Number(chars[0]), Y: Number(chars[1]) });
+    this.rover = undefined;
 
     return {
       type: 'simulation',
@@ -114,6 +115,8 @@ export class SimulationController {
   }
 
   private readMovements(chars: string[]): Output {
+    chars = chars.join('').split('');
+
     if (!this.board) {
       return {
         type: 'missing board',

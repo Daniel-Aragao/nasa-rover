@@ -1,4 +1,4 @@
-<div class="board" *ngIf="grid" #board>
+<div class="board" *ngIf="grid && visible" #board>
   <ng-container *ngFor="let gridItem of grid; let i = index">
     <div
       class="cell"

@@ -16,6 +16,12 @@ import { Grid } from 'src/app/interfaces/models/grid';
 export class BoardComponent implements OnInit {
   @Input() grid: Grid<Direction | undefined> | undefined;
 
+  get visible() {
+    return (
+      (this.grid?.length || 0) <= 10 || (this.grid?.[0]?.length || 0) <= 10
+    );
+  }
+
   constructor() {}
 
   ngOnInit(): void {}

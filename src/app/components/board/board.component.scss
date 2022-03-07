@@ -8,12 +8,13 @@
   align-content: flex-start;
   justify-content: space-around;
   align-items: center;
-  grid-gap: 15px;
+  grid-gap: 12px;
   overflow-y: scroll;
 
   .cell {
     box-shadow: 1px 1px 3px -1px #0d1117;
     background-color: var(--panel-bg-color);
+    border: 1px solid transparent;
 
     &:hover {
       border-color: white;

@@ -37,6 +37,10 @@
       display: inline-flex;
       align-items: center;
 
+      &.warning {
+        color: #a7a75b;
+      }
+
       label {
         margin-right: 5px;
       }

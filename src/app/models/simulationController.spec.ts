@@ -15,7 +15,7 @@ describe('running simulation command(s)', () => {
   });
 
   it("'75' should create a board of size 7:5", () => {
-    let output = simulation.run('75');
+    let output = simulation.run('7 5');
 
     expect(output.type).toBe('simulation');
     expect(simulation.boardSize).toEqual({ X: 7, Y: 5 });
@@ -28,7 +28,7 @@ describe('running simulation command(s)', () => {
   });
 
   it("'55','1' should return invalid", () => {
-    let output = simulation.run('55');
+    let output = simulation.run('5 5');
     output = simulation.run('1');
 
     expect(output.type).toBe('invalid');
@@ -36,7 +36,7 @@ describe('running simulation command(s)', () => {
   });
 
   it("'55','1 C N' should return invalid", () => {
-    let output = simulation.run('55');
+    let output = simulation.run('5 5');
     output = simulation.run('1 C N');
 
     expect(output.type).toBe('invalid');
@@ -44,7 +44,7 @@ describe('running simulation command(s)', () => {
   });
 
   it("'55','C C N' should return invalid", () => {
-    let output = simulation.run('55');
+    let output = simulation.run('5 5');
     output = simulation.run('C C N');
 
     expect(output.type).toBe('invalid');
@@ -52,7 +52,7 @@ describe('running simulation command(s)', () => {
   });
 
   it("'55', '5 5 S','C C N' should return invalid when the first movement is not valid", () => {
-    let output = simulation.run('55');
+    let output = simulation.run('5 5');
     output = simulation.run('5 5 S');
     output = simulation.run('C C N');
 
@@ -61,7 +61,7 @@ describe('running simulation command(s)', () => {
   });
 
   it("'55', '5 5 S','M C N' should return rover skipping invalid commands", () => {
-    let output = simulation.run('55');
+    let output = simulation.run('5 5');
     output = simulation.run('5 5 S');
     output = simulation.run('M C N');
 
@@ -69,18 +69,18 @@ describe('running simulation command(s)', () => {
     expect(output.value).toBe('5 4 S');
   });
 
-  it("'55', '31S','LCM' should return rover skipping invalid commands", () => {
-    let output = simulation.run('55');
-    output = simulation.run('31S');
+  it("'55', '3 1 S','LCM' should return rover skipping invalid commands", () => {
+    let output = simulation.run('5 5');
+    output = simulation.run('3 1 S');
     output = simulation.run('LCM');
 
     expect(output.type).toBe('rover');
     expect(output.value).toBe('4 1 E');
   });
 
-  it("'55', '55S','LCM' should return rover and not move, just turn", () => {
-    let output = simulation.run('55');
-    output = simulation.run('55S');
+  it("'5 5', '5 5 S','LCM' should return rover and not move, just turn", () => {
+    let output = simulation.run('5 5');
+    output = simulation.run('5 5 S');
     output = simulation.run('LCM');
 
     expect(output.type).toBe('rover');

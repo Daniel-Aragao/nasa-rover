@@ -12,13 +12,13 @@
 
     .board {
       width: 75vw;
-      height: 700px;
+      height: calc(100vh - 210px);
     }
 
     .output {
       width: 20vw;
-      height: 700px;
-      margin-left: 5vw;
+      height: calc(100vh - 210px);
+      margin-left: 2vw;
       z-index: 1;
     }
   }

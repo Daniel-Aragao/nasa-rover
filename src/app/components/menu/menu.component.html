@@ -26,7 +26,10 @@
         ms
       </label>
     </div>
-    <div class="input-group">
+    <div
+      class="input-group"
+      [ngClass]="{ warning: board && board.X + board.Y > 18 }"
+    >
       <label>Board</label
       ><label *ngIf="board"> {{ board.X }}:{{ board.Y }} </label>
     </div>
