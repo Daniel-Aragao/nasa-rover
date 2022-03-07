@@ -1,1 +1,20 @@
-<div class="board">BOARD</div>
+<div class="board" #board>
+  <ng-container *ngIf="grid">
+    <ng-container *ngFor="let gridItem of grid; let i = index">
+      <div
+        class="cell"
+        *ngFor="let cell of gridItem; let j = index"
+        [style.width.px]="calcWidth(board.offsetWidth)"
+        [style.height.px]="calcWidth(board.offsetWidth)"
+      >
+        <div class="coordinates">
+          {{ X(j) + " " + Y(i) }}
+        </div>
+        <app-rover
+          *ngIf="grid[Y(i)]?.[X(j)]"
+          [rover]="grid[Y(i)]?.[X(j)]"
+        ></app-rover>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

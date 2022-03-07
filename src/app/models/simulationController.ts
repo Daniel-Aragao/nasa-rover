@@ -18,9 +18,8 @@ export class SimulationController {
     return this.rover?.direction;
   }
 
-  get boardMatrix() {
-    // this.board
-    return null;
+  get grid() {
+    return this.board?.grid;
   }
 
   /**

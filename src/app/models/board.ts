@@ -1,18 +1,32 @@
 import { Directions } from '../enums/directions';
 import { Movement } from '../enums/movement';
 import { Direction } from '../interfaces/models/direction';
+import { Grid } from '../interfaces/models/grid';
 import { IBoard } from '../interfaces/models/iboard';
 import { IEntity } from '../interfaces/models/ientity';
 import { Position } from '../interfaces/models/position';
 import { Rover } from './rover';
 
 export class Board implements IBoard {
-  private positionGrid: {
-    [x: number]: { [y: number]: IEntity };
-  } = {};
+  private positionGrid: Grid<IEntity> = [[]];
 
   get gridSize(): Position {
     return { ...this._gridSize };
+  }
+
+  get grid() {
+    let result: Grid<Direction | undefined> = [[]];
+    let size = this.gridSize;
+
+    for (let i = 0; i <= size.Y; i++) {
+      result[i] = [];
+
+      for (let j = 0; j <= size.X; j++) {
+        result[i][j] = this.positionGrid[j]?.[i]?.direction;
+      }
+    }
+
+    return result;
   }
 
   constructor(private _gridSize: Position) {}
@@ -33,7 +47,7 @@ export class Board implements IBoard {
   createRover(direction: Direction): Rover | undefined {
     if (this.validPosition(direction) && !this.getCell(direction)) {
       if (!this.positionGrid[direction.X]) {
-        this.positionGrid[direction.X] = {};
+        this.positionGrid[direction.X] = [];
       }
 
       return (this.positionGrid[direction.X][direction.Y] = new Rover(
@@ -66,7 +80,7 @@ export class Board implements IBoard {
     delete this.positionGrid[entity.direction.X][entity.direction.Y];
 
     if (!this.positionGrid[newDirection.X]) {
-      this.positionGrid[newDirection.X] = {};
+      this.positionGrid[newDirection.X] = [];
     }
 
     this.positionGrid[newDirection.X][newDirection.Y] = entity;
@@ -76,7 +90,7 @@ export class Board implements IBoard {
     let movementRequest = entity.generateMovement(movement);
     let newDirection = movementRequest.direction;
 
-    if (this.validPosition(newDirection)) {
+    if (this.validPosition(newDirection) && !this.getCell(newDirection)) {
       this.applyMovementToGrid(entity, newDirection);
 
       movementRequest.apply();

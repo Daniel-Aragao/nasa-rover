@@ -1,3 +1,4 @@
+import { Grid } from 'src/app/interfaces/models/grid';
 import { SimulationController } from './models/simulationController';
 import { Component } from '@angular/core';
 import { Output } from './interfaces/models/output';
@@ -17,6 +18,10 @@ export class AppComponent {
 
   get roverDirection() {
     return this.simulation.roverDirection;
+  }
+
+  get grid() {
+    return this.simulation.grid;
   }
 
   /**

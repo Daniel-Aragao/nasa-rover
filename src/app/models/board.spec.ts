@@ -127,16 +127,18 @@ describe('Board act method', function () {
   };
 
   let board: Board;
-  let rover: Rover;
+  let rover1: Rover;
+  let rover2: Rover;
   let defaultDirection = { X: 3, Y: 3, Z: Directions.N };
 
   beforeEach(() => {
     board = new Board(gridSize);
-    rover = board.createRover(defaultDirection)!;
+    rover1 = board.createRover(defaultDirection)!;
+    rover2 = board.createRover({ X: 3, Y: 2, Z: Directions.N })!;
   });
 
   it('with default rover should return the direction X:3 Y:4 Z:N with movement M', function () {
-    let newDirection = board.act(rover.direction, Movement.M);
+    let newDirection = board.act(rover1.direction, Movement.M);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(4);
@@ -144,11 +146,11 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:5 Z:N with 5 movements M', function () {
-    let newDirection = board.act(rover.direction, Movement.M);
-    newDirection = board.act(rover.direction, Movement.M);
-    newDirection = board.act(rover.direction, Movement.M);
-    newDirection = board.act(rover.direction, Movement.M);
-    newDirection = board.act(rover.direction, Movement.M);
+    let newDirection = board.act(rover1.direction, Movement.M);
+    newDirection = board.act(rover1.direction, Movement.M);
+    newDirection = board.act(rover1.direction, Movement.M);
+    newDirection = board.act(rover1.direction, Movement.M);
+    newDirection = board.act(rover1.direction, Movement.M);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(5);
@@ -156,7 +158,7 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:W with movement L', function () {
-    let newDirection = board.act(rover.direction, Movement.L);
+    let newDirection = board.act(rover1.direction, Movement.L);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -164,7 +166,7 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:E with movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -172,7 +174,7 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:E with movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -180,7 +182,7 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:E with movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -188,7 +190,7 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:S with 1x movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -196,8 +198,8 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:S with 2x movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
-    newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
+    newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -205,9 +207,9 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:W with 3x movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
-    newDirection = board.act(rover.direction, Movement.R);
-    newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
+    newDirection = board.act(rover1.direction, Movement.R);
+    newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -215,10 +217,10 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:N with 4x movement R', function () {
-    let newDirection = board.act(rover.direction, Movement.R);
-    newDirection = board.act(rover.direction, Movement.R);
-    newDirection = board.act(rover.direction, Movement.R);
-    newDirection = board.act(rover.direction, Movement.R);
+    let newDirection = board.act(rover1.direction, Movement.R);
+    newDirection = board.act(rover1.direction, Movement.R);
+    newDirection = board.act(rover1.direction, Movement.R);
+    newDirection = board.act(rover1.direction, Movement.R);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -226,7 +228,7 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:S with 1x movement L', function () {
-    let newDirection = board.act(rover.direction, Movement.L);
+    let newDirection = board.act(rover1.direction, Movement.L);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -234,8 +236,8 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:S with 2x movement L', function () {
-    let newDirection = board.act(rover.direction, Movement.L);
-    newDirection = board.act(rover.direction, Movement.L);
+    let newDirection = board.act(rover1.direction, Movement.L);
+    newDirection = board.act(rover1.direction, Movement.L);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -243,9 +245,9 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:W with 3x movement L', function () {
-    let newDirection = board.act(rover.direction, Movement.L);
-    newDirection = board.act(rover.direction, Movement.L);
-    newDirection = board.act(rover.direction, Movement.L);
+    let newDirection = board.act(rover1.direction, Movement.L);
+    newDirection = board.act(rover1.direction, Movement.L);
+    newDirection = board.act(rover1.direction, Movement.L);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
@@ -253,13 +255,67 @@ describe('Board act method', function () {
   });
 
   it('with default rover should return the direction X:3 Y:3 Z:N with 4x movement L', function () {
-    let newDirection = board.act(rover.direction, Movement.L);
-    newDirection = board.act(rover.direction, Movement.L);
-    newDirection = board.act(rover.direction, Movement.L);
-    newDirection = board.act(rover.direction, Movement.L);
+    let newDirection = board.act(rover1.direction, Movement.L);
+    newDirection = board.act(rover1.direction, Movement.L);
+    newDirection = board.act(rover1.direction, Movement.L);
+    newDirection = board.act(rover1.direction, Movement.L);
 
     expect(newDirection?.X).toBe(3);
     expect(newDirection?.Y).toBe(3);
     expect(newDirection?.Z).toBe(Directions.N);
+  });
+
+  it('rover 2 should not act towards rover1', function () {
+    let newDirection = board.act(rover2.direction, Movement.M);
+
+    expect(rover2?.direction).not.toEqual(rover1.direction);
+  });
+});
+
+describe('Board get grid', function () {
+  let gridSize: Position = {
+    X: 5,
+    Y: 6,
+  };
+
+  let board: Board;
+  let rover1: Rover;
+  let rover2: Rover;
+  let rover3: Rover;
+  let rover4: Rover;
+  let defaultDirection = { X: 3, Y: 3, Z: Directions.N };
+
+  beforeEach(() => {
+    board = new Board(gridSize);
+    rover1 = board.createRover({ X: 1, Y: 4, Z: Directions.N })!;
+    rover2 = board.createRover({ X: 2, Y: 5, Z: Directions.S })!;
+    rover3 = board.createRover({ X: 3, Y: 7, Z: Directions.N })!;
+    rover4 = board.createRover({ X: 3, Y: 5, Z: Directions.W })!;
+  });
+
+  it('should return a 5:6 grid', function () {
+    let grid = board.grid;
+
+    expect(grid.length).toBe(7);
+    expect(grid[0].length).toBe(6);
+  });
+
+  it('rover3 should not exit', function () {
+    expect(rover3).toBeUndefined();
+  });
+
+  it('should have rover1 and rover 2 on 1:4:N and 2:5:S', function () {
+    let grid = board.grid;
+
+    expect(grid[4][1]).toEqual(rover1.direction);
+    expect(grid[5][2]).toEqual(rover2.direction);
+  });
+
+  it('should move rover4 and have it on 2:5:W', function () {
+    board.act(rover4.direction, Movement.L);
+    board.act(rover4.direction, Movement.M);
+    let grid = board.grid;
+
+    expect(grid[4][3]).toEqual(rover4.direction);
   });
 });
