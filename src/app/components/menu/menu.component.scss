@@ -10,6 +10,7 @@
     width: 19%;
     min-width: 170px;
     height: 100px;
+    z-index: 1;
 
     img {
       height: 100%;
@@ -29,6 +30,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     padding: 5px;
+    z-index: 1;
 
     .input-group {
       margin: 3px;
