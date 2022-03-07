@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 declare var particlesJS: {
   load: (elementId: string, configPath: string, callback: () => void) => void;
@@ -10,15 +10,17 @@ declare var particlesJS: {
   styleUrls: ['./particle.component.scss'],
 })
 export class ParticleComponent implements OnInit {
-  constructor() {}
+  constructor(private _ngZone: NgZone) {}
 
   ngOnInit(): void {
-    particlesJS.load(
-      'particle-container',
-      'assets/particlesjs-config.json',
-      function () {
-        console.log('callback - particles.js config loaded');
-      }
-    );
+    this._ngZone.runOutsideAngular(() => {
+      particlesJS.load(
+        'particle-container',
+        'assets/particlesjs-config.json',
+        () => {
+          console.log('callback - particles.js config loaded');
+        }
+      );
+    });
   }
 }

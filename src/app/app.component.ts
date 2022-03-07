@@ -1,6 +1,6 @@
 import { Grid } from 'src/app/interfaces/models/grid';
 import { SimulationController } from './models/simulationController';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Output } from './interfaces/models/output';
 
 @Component({
