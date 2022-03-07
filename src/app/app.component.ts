@@ -3,16 +3,12 @@ import { SimulationController } from './models/simulationController';
 import { Component, OnInit } from '@angular/core';
 import { Output } from './interfaces/models/output';
 
-declare var particlesJS: {
-  load: (elementId: string, configPath: string, callback: () => void) => void;
-};
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   private simulation: SimulationController;
   outputs: Output[] = [];
 
@@ -33,15 +29,6 @@ export class AppComponent implements OnInit {
    */
   constructor() {
     this.simulation = new SimulationController();
-  }
-  ngOnInit(): void {
-    // particlesJS.load(
-    //   'particle-container',
-    //   'assets/particlesjs-config.json',
-    //   function () {
-    //     console.log('callback - particles.js config loaded');
-    //   }
-    // );
   }
 
   reset() {

@@ -1,20 +1,19 @@
-<ng-container>
-  <div id="app-container" class="container">
-    <div class="app-header">
-      <app-menu
-        (action)="run($event)"
-        [board]="boardSize"
-        [rover]="roverDirection"
-        (resetBoard)="reset()"
-      ></app-menu>
+<div class="container">
+  <!-- <app-particle></app-particle> -->
+  <div class="app-header">
+    <app-menu
+      (action)="run($event)"
+      [board]="boardSize"
+      [rover]="roverDirection"
+      (resetBoard)="reset()"
+    ></app-menu>
+  </div>
+  <div class="app-body">
+    <div class="board">
+      <app-board [grid]="grid"></app-board>
     </div>
-    <div class="app-body">
-      <div class="board">
-        <app-board [grid]="grid"></app-board>
-      </div>
-      <div class="output">
-        <app-output [outputs]="outputs"></app-output>
-      </div>
+    <div class="output">
+      <app-output [outputs]="outputs"></app-output>
     </div>
   </div>
-</ng-container>
+</div>

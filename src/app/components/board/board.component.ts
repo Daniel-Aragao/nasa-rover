@@ -13,14 +13,10 @@ import { Grid } from 'src/app/interfaces/models/grid';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit, OnChanges {
+export class BoardComponent implements OnInit {
   @Input() grid: Grid<Direction | undefined> | undefined;
 
   constructor() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.table(this.grid);
-  }
 
   ngOnInit(): void {}
 
