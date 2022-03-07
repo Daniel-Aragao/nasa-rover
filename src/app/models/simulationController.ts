@@ -14,6 +14,15 @@ export class SimulationController {
     return this.board?.gridSize;
   }
 
+  get roverDirection() {
+    return this.rover?.direction;
+  }
+
+  get boardMatrix() {
+    // this.board
+    return null;
+  }
+
   /**
    *
    */
@@ -81,11 +90,19 @@ export class SimulationController {
     let entity = this.board.getCell(direction);
 
     if (!entity) {
-      this.rover = this.board.createRover(direction);
+      entity = this.board.createRover(direction);
 
+      if (entity) {
+        this.rover = entity;
+
+        return {
+          type: 'simulation',
+          value: `Rover created ${chars.join(',')}`,
+        };
+      }
       return {
-        type: 'simulation',
-        value: `Rover created ${chars.join(',')}`,
+        type: 'invalid',
+        value: chars.join(' '),
       };
     }
 
@@ -137,5 +154,10 @@ export class SimulationController {
 
   private validMovement(movement: string) {
     return !!Object.keys(Movement).find((d) => d === movement);
+  }
+
+  reset() {
+    this.board = undefined;
+    this.rover = undefined;
   }
 }

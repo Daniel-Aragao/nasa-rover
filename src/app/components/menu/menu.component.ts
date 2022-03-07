@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Directions } from 'src/app/enums/directions';
+import { Direction } from 'src/app/interfaces/models/direction';
 import { Position } from 'src/app/interfaces/models/position';
 import { Rover } from 'src/app/models/rover';
 
@@ -11,15 +12,14 @@ import { Rover } from 'src/app/models/rover';
 export class MenuComponent implements OnInit {
   @Output() resetBoard = new EventEmitter<void>();
   @Output() action = new EventEmitter<string>();
+  @Input() board: Position | undefined;
+  @Input() rover: Direction | undefined;
 
   delay = 100;
-  board: Position | undefined;
-  rover: Rover | undefined;
   command: string;
   running = false;
 
   constructor() {
-    this.rover = new Rover({ X: 5, Y: 5, Z: Directions.N });
     this.command = '';
   }
 
@@ -46,10 +46,8 @@ export class MenuComponent implements OnInit {
   }
 
   singleAction(command: string) {
-    console.log(command);
+    this.action.emit(command);
   }
-
-  updateDelay() {}
 
   reset() {
     this.resetBoard.emit();

@@ -1,1 +1,25 @@
-<div class="output">output</div>
+<div class="output">
+  <div class="header">
+    <span>Output</span>
+    <button (click)="onlyRover = !onlyRover">
+      {{ onlyRover ? "Minimal" : "All" }}
+    </button>
+  </div>
+  <div class="body" *ngIf="outputs">
+    <ng-container *ngFor="let output of outputs">
+      <div *ngIf="!onlyRover || output.type === 'rover'">
+        {{ ">>" }}
+        <span
+          [ngClass]="{
+            'invalid-command': invalid(output)
+          }"
+        >
+          {{ output.value }}
+          <div *ngIf="invalid(output)">
+            {{ output.type }}
+          </div>
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</div>
