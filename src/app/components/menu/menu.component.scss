@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    width: 19%;
+    min-width: 170px;
+    height: 100px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .inputs {
+    background-color: var(--panel-bg-color);
+    color: var(--panel-color);
+    min-height: 100px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 5px;
+
+    .input-group {
+      margin: 3px;
+      display: inline-flex;
+      align-items: center;
+
+      label {
+        margin-right: 5px;
+      }
+      input,
+      textarea {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #f0f6fc1a;
+        color: var(--panel-color);
+        width: 50px;
+
+        &.action {
+          width: 100px;
+        }
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+          border: none;
+          border-bottom: 1px solid var(--panel-color);
+        }
+      }
+    }
+
+    .input-groups {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}

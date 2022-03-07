@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --panel-bg-color: #161b22;
+  --primary-bg-color: #0d1117;
+  --panel-color: #f0f6fc;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  color: var(--panel-color);
+  background-color: var(--primary-bg-color);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--primary-bg-color);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #464646;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--panel-bg-color);
+  cursor: pointer;
+}
+
+button {
+  background: #262f3c;
+  color: var(--panel-color);
+  border: 0;
+  padding: 15px;
+
+  &:hover {
+    background-color: #44546a;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #262f3c;
+  }
+
+  &:disabled {
+    background-color: var(--panel-bg-color);
+    cursor: not-allowed;
+  }
+}

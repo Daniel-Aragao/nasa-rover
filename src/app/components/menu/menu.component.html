@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="logo">
+    <img src="/assets/nasa-logo-web-rgb.png" alt="" />
+  </div>
+  <div class="inputs">
+    <div class="input-groups">
+      <div class="input-group">
+        <label for="action-input">Action</label
+        ><textarea
+          id="action-input"
+          [(ngModel)]="command"
+          class="action"
+          type="text"
+          rows="2"
+          [disabled]="running"
+        ></textarea>
+      </div>
+      <div class="input-group">
+        <button [disabled]="running" (click)="act()">Run</button>
+      </div>
+    </div>
+    <div class="input-group">
+      <label>Delay</label
+      ><label>
+        <input type="number" (change)="updateDelay()" [(ngModel)]="delay" />
+        ms
+      </label>
+    </div>
+    <div class="input-group">
+      <label>Board</label
+      ><label *ngIf="board"> {{ board.X }}:{{ board.Y }} </label>
+    </div>
+    <div class="input-group">
+      <label>Rover</label
+      ><label
+        ><span *ngIf="rover">
+          {{ rover.direction.X }}:{{ rover.direction.Y }}:{{
+            rover.direction.Z
+          }}
+        </span>
+      </label>
+    </div>
+    <div class="input-group"><button (click)="reset()">Reset</button></div>
+  </div>
+</div>
