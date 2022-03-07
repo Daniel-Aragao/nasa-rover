@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nasa-rover-feedf": {
+      "hosting": {
+        "nasa": [
+          "nasa-rover-feedf"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nasa-rover-feedf"
+  }
+}
