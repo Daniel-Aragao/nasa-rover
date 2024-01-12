@@ -1,27 +1,46 @@
 # Nasa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+This project is a rover simulator that should navigate in a board
 
-## Development server
+## Instructions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In the Action field insert the command you want to reproduce.
 
-## Code scaffolding
+Insrting multiple commands by breaking lines and writting new ones before hitting Run.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Also, if multiple commands of movement are inserted with spaces separations you can also run deconsidering the delay set.
 
-## Build
+### Create a board
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+At any point you can create a new board by inserting the board dimensions
 
-## Running unit tests
+> X Y
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+where:  
 
-## Running end-to-end tests
+* 0 <= X  
+* 0 <= Y
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Create Rover
 
-## Further help
+At any point a Rover can be created/overwritted by setting the postion and direction in the Action field
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> X Y D
+
+Where:  
+
+* 0 <= X  Position  
+* 0 <= Y  Position  
+* D as of Direction IN (N, S, E, W)  
+
+### Move Rover
+
+The rover will be moved by an action of a set of 3 different movements based on the Rover current position.  
+
+> < R | L | M >
+
+Where Movement may be:  
+
+* R as in rotate Right  
+* L as in rotate Light  
+* M as Move forward  
