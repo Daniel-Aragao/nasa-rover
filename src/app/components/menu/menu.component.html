@@ -22,7 +22,7 @@
     <div class="input-group">
       <label>Delay</label
       ><label>
-        <input type="number" [(ngModel)]="delay" />
+        <input type="number" [(ngModel)]="delay" step="100"/>
         ms
       </label>
     </div>
@@ -40,5 +40,8 @@
       </label>
     </div>
     <div class="input-group"><button (click)="reset()">Reset</button></div>
+    <a class="guide" target=”_blank” href='https://github.com/Daniel-Aragao/nasa-rover/blob/main/README.md' open>
+      ?
+    </a>
   </div>
 </div>

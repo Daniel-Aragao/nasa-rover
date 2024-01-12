@@ -71,3 +71,22 @@
     }
   }
 }
+
+.guide {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 2px solid #262f3c;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #262f3c;
+  }
+}
